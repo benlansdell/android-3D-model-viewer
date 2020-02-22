@@ -41,7 +41,7 @@ public class MenuActivity extends ListActivity {
 
 
     private enum Action {
-        LOAD_MODEL, GITHUB, SETTINGS, HELP, ABOUT, EXIT, UNKNOWN, DEMO
+        LOAD_MODEL, LOAD_ASTROLABE, GITHUB, SETTINGS, HELP, ABOUT, EXIT, UNKNOWN, DEMO
     }
 
     /**
@@ -78,6 +78,9 @@ public class MenuActivity extends ListActivity {
                     break;
                 case GITHUB:
                     AndroidUtils.openUrl(this, "https://github.com/andresoviedo/android-3D-model-viewer");
+                    break;
+                case LOAD_ASTROLABE:
+                    loadAstrolabe();
                     break;
                 case LOAD_MODEL:
                     loadModel();
@@ -124,6 +127,11 @@ public class MenuActivity extends ListActivity {
             }
         });
 
+    }
+
+    private void loadAstrolabe() {
+        String file = "cube.obj";
+        launchModelRendererActivity(Uri.parse("assets://" + getPackageName() + "/models/" + file));
     }
 
     private void loadModelFromAssets() {
